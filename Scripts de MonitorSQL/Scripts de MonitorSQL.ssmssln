@@ -5,6 +5,29 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "Scripts de MonitorSQL", "Scripts de MonitorSQL\Scripts de MonitorSQL.ssmssqlproj", "{A32A5A46-0F4B-42A9-B5FF-126408459B64}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts Objetos", "Scripts Objetos", "{C8F7408D-EC0A-4888-97EB-44511B831209}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tablas", "Tablas", "{A4FBA9B7-6E44-435E-8A9A-1C4D57F3615F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vistas", "Vistas", "{6B1130F7-5681-447C-9380-3FC6182D45F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Programación", "Programación", "{DE74C9CE-5B24-41EE-BC12-DECC00629970}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desencadenadores de bases de datos", "Desencadenadores de bases de datos", "{7CAD5D7C-0519-4488-8BBA-D86FB5D09CAA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Funciones", "Funciones", "{EC641DDF-9111-4936-ABAF-41BDF679CC5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Procedimientos Almacenados", "Procedimientos Almacenados", "{F30B630B-2991-42AF-B5C4-CACD1AE9FC3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Seguridad", "Seguridad", "{AFE71040-1DA4-4371-A07A-EA1C1FB7CEB2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Esquemas", "Esquemas", "{2F7162CC-E75F-450F-B9D1-59A06BCED583}"
+	ProjectSection(SolutionItems) = preProject
+		Scripts Objetos\Seguridad\Esquemas\Crear Esquema TI.sql = Scripts Objetos\Seguridad\Esquemas\Crear Esquema TI.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Usuarios", "Usuarios", "{C45D4620-E19A-44B5-A082-6D7FBF111F17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Default|Default = Default|Default
@@ -15,5 +38,16 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A4FBA9B7-6E44-435E-8A9A-1C4D57F3615F} = {C8F7408D-EC0A-4888-97EB-44511B831209}
+		{6B1130F7-5681-447C-9380-3FC6182D45F1} = {C8F7408D-EC0A-4888-97EB-44511B831209}
+		{DE74C9CE-5B24-41EE-BC12-DECC00629970} = {C8F7408D-EC0A-4888-97EB-44511B831209}
+		{7CAD5D7C-0519-4488-8BBA-D86FB5D09CAA} = {DE74C9CE-5B24-41EE-BC12-DECC00629970}
+		{EC641DDF-9111-4936-ABAF-41BDF679CC5B} = {DE74C9CE-5B24-41EE-BC12-DECC00629970}
+		{F30B630B-2991-42AF-B5C4-CACD1AE9FC3C} = {DE74C9CE-5B24-41EE-BC12-DECC00629970}
+		{AFE71040-1DA4-4371-A07A-EA1C1FB7CEB2} = {C8F7408D-EC0A-4888-97EB-44511B831209}
+		{2F7162CC-E75F-450F-B9D1-59A06BCED583} = {AFE71040-1DA4-4371-A07A-EA1C1FB7CEB2}
+		{C45D4620-E19A-44B5-A082-6D7FBF111F17} = {AFE71040-1DA4-4371-A07A-EA1C1FB7CEB2}
 	EndGlobalSection
 EndGlobal
