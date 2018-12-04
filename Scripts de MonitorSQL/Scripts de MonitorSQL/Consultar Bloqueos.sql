@@ -197,4 +197,4 @@ WHERE s.spid IN (
 
 /*******************************************************************/
 
-
+SELECT @@SPID AS 'Control ID', SYSTEM_USER AS 'Login Name', USER AS 'User Name';
