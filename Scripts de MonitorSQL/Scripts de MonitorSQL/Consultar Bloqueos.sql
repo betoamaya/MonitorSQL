@@ -93,40 +93,62 @@ WHERE blocking_session_id <> 0;
 EXEC sp_who;
 
 
-SELECT scheduler_id, current_tasks_count, runnable_tasks_count
+SELECT scheduler_id,
+       current_tasks_count,
+       runnable_tasks_count
 FROM sys.dm_os_schedulers
-WHERE scheduler_id < 255
+WHERE scheduler_id < 255;
 
- 
 
-SELECT t1.resource_type AS 'lock type',db_name(resource_database_id) AS 'database',
-t1.resource_associated_entity_id AS 'blk object',t1.request_mode AS 'lock req',                                      --- lock requested
-t1.request_session_id AS 'waiter sid', t2.wait_duration_ms AS 'wait time',
-(SELECT [text] FROM sys.dm_exec_requests AS r
-CROSS APPLY sys.dm_exec_sql_text(r.sql_handle)
-WHERE r.session_id = t1.request_session_id) AS 'waiter_batch',
-(SELECT substring(qt.text,r.statement_start_offset/2,
-(CASE WHEN r.statement_end_offset = -1
-THEN LEN(CONVERT(nvarchar(max), qt.text)) * 2
-ELSE r.statement_end_offset END - r.statement_start_offset)/2)
-FROM sys.dm_exec_requests AS r
-CROSS APPLY sys.dm_exec_sql_text(r.sql_handle) AS qt
-WHERE r.session_id = t1.request_session_id) AS 'waiter_stmt',
-t2.blocking_session_id AS 'blocker sid',
-(SELECT [text] FROM sys.sysprocesses AS p
-CROSS APPLY sys.dm_exec_sql_text(p.sql_handle)
-WHERE p.spid = t2.blocking_session_id) AS 'blocker_stmt'
+
+SELECT t1.resource_type AS 'lock type',
+       DB_NAME(resource_database_id) AS 'database',
+       t1.resource_associated_entity_id AS 'blk object',
+       t1.request_mode AS 'lock req', --- lock requested
+       t1.request_session_id AS 'waiter sid',
+       t2.wait_duration_ms AS 'wait time',
+       (
+           SELECT [text]
+           FROM sys.dm_exec_requests AS r
+               CROSS APPLY sys.dm_exec_sql_text(r.sql_handle)
+           WHERE r.session_id = t1.request_session_id
+       ) AS 'waiter_batch',
+       (
+           SELECT SUBSTRING(   qt.text,
+                               r.statement_start_offset / 2,
+                               (CASE
+                                    WHEN r.statement_end_offset = -1 THEN
+                                        LEN(CONVERT(NVARCHAR(MAX), qt.text)) * 2
+                                    ELSE
+                                        r.statement_end_offset
+                                END - r.statement_start_offset
+                               ) / 2
+                           )
+           FROM sys.dm_exec_requests AS r
+               CROSS APPLY sys.dm_exec_sql_text(r.sql_handle) AS qt
+           WHERE r.session_id = t1.request_session_id
+       ) AS 'waiter_stmt',
+       t2.blocking_session_id AS 'blocker sid',
+       (
+           SELECT [text]
+           FROM sys.sysprocesses AS p
+               CROSS APPLY sys.dm_exec_sql_text(p.sql_handle)
+           WHERE p.spid = t2.blocking_session_id
+       ) AS 'blocker_stmt'
 FROM sys.dm_tran_locks AS t1
-INNER JOIN sys.dm_os_waiting_tasks AS t2
-ON t1.lock_owner_address = t2.resource_address
+    INNER JOIN sys.dm_os_waiting_tasks AS t2
+        ON t1.lock_owner_address = t2.resource_address;
 
 
-SELECT t1.resource_type, t1.resource_database_id,
-t1.resource_associated_entity_id,t1.request_mode,
-t1.request_session_id,t2.blocking_session_id
+SELECT t1.resource_type,
+       t1.resource_database_id,
+       t1.resource_associated_entity_id,
+       t1.request_mode,
+       t1.request_session_id,
+       t2.blocking_session_id
 FROM sys.dm_tran_locks AS t1
-INNER JOIN sys.dm_os_waiting_tasks AS t2
-ON t1.lock_owner_address = t2.resource_address;
+    INNER JOIN sys.dm_os_waiting_tasks AS t2
+        ON t1.lock_owner_address = t2.resource_address;
 
 
 
@@ -149,16 +171,22 @@ WHERE s.blocked = 55;
 
 
 /************************************************************/
+
 SELECT s.spid,
-		s.status, s.loginame, s.hostname, dec.client_net_address,
-       DB_NAME(s.dbid) AS dbName,(
+       s.status,
+       s.loginame,
+       s.hostname,
+       dec.client_net_address,
+       DB_NAME(s.dbid) AS dbName,
+       (
            SELECT dest.text FROM sys.dm_exec_sql_text(s.sql_handle) AS dest
        ) AS text,
-	   s.open_tran,
+       s.open_tran,
        s.cmd,
        s.lastwaittype
 FROM sys.sysprocesses AS s
-LEFT JOIN sys.dm_exec_connections AS dec ON s.spid = dec.session_id
+    LEFT JOIN sys.dm_exec_connections AS dec
+        ON s.spid = dec.session_id
 WHERE s.spid IN (
                     SELECT DISTINCT
                         s2.blocked
@@ -166,4 +194,7 @@ WHERE s.spid IN (
                     WHERE s2.blocked <> 0
                 )
       AND s.blocked = 0;
+
+/*******************************************************************/
+
 
