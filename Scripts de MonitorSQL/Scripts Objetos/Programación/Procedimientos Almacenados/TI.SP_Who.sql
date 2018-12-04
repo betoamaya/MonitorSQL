@@ -48,8 +48,7 @@ BEGIN
                SELECT dest.text FROM sys.dm_exec_sql_text(s.sql_handle) AS dest
            ) AS text,
            s.open_tran,
-           s.cmd,
-           s.lastwaittype
+           s.cmd
     FROM sys.sysprocesses AS s
         LEFT JOIN sys.dm_exec_connections AS dec
             ON s.spid = dec.session_id
