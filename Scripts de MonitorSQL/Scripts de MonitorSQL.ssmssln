@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts Objetos", "Scripts Objetos", "{C8F7408D-EC0A-4888-97EB-44511B831209}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tablas", "Tablas", "{A4FBA9B7-6E44-435E-8A9A-1C4D57F3615F}"
+	ProjectSection(SolutionItems) = preProject
+		Scripts Objetos\Tablas\TI.BloqueosLog.sql = Scripts Objetos\Tablas\TI.BloqueosLog.sql
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vistas", "Vistas", "{6B1130F7-5681-447C-9380-3FC6182D45F1}"
 EndProject
@@ -18,6 +21,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Funciones", "Funciones", "{EC641DDF-9111-4936-ABAF-41BDF679CC5B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Procedimientos Almacenados", "Procedimientos Almacenados", "{F30B630B-2991-42AF-B5C4-CACD1AE9FC3C}"
+	ProjectSection(SolutionItems) = preProject
+		Scripts Objetos\Programación\Procedimientos Almacenados\TI.SP_Who.sql = Scripts Objetos\Programación\Procedimientos Almacenados\TI.SP_Who.sql
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Seguridad", "Seguridad", "{AFE71040-1DA4-4371-A07A-EA1C1FB7CEB2}"
 EndProject

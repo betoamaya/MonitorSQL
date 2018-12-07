@@ -18,7 +18,14 @@
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Consultas" Type="0" Sorted="true">
-      <Items />
+      <Items>
+        <FileNode Name="Consultar Bloqueos.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:SERVICIOSTI:False:SA</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>SERVICIOSTI</AssociatedConnSrvName>
+          <AssociatedConnUserName>SA</AssociatedConnUserName>
+          <FullPath>Consultar Bloqueos.sql</FullPath>
+        </FileNode>
+      </Items>
     </LogicalFolder>
     <LogicalFolder Name="Varios" Type="3" Sorted="true">
       <Items />
