@@ -3,6 +3,18 @@
   <Items>
     <LogicalFolder Name="Conexiones" Type="2" Sorted="true">
       <Items>
+        <ConnectionNode Name="SERVICIOSTI:MonitorConsulta">
+          <Created>2019-01-08T09:21:21.3678348-06:00</Created>
+          <Type>SQL</Type>
+          <Server>SERVICIOSTI</Server>
+          <UserName>MonitorConsulta</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName />
+        </ConnectionNode>
         <ConnectionNode Name="SERVICIOSTI:SA">
           <Created>2018-11-23T11:56:51.0675093-06:00</Created>
           <Type>SQL</Type>
@@ -24,6 +36,18 @@
           <AssociatedConnSrvName>SERVICIOSTI</AssociatedConnSrvName>
           <AssociatedConnUserName>SA</AssociatedConnUserName>
           <FullPath>Consultar Bloqueos.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Permisos.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:SERVICIOSTI:False:SA</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>SERVICIOSTI</AssociatedConnSrvName>
+          <AssociatedConnUserName>SA</AssociatedConnUserName>
+          <FullPath>Permisos.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TI.SP_Who - Consulta.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:SERVICIOSTI:False:MonitorConsulta</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>SERVICIOSTI</AssociatedConnSrvName>
+          <AssociatedConnUserName>MonitorConsulta</AssociatedConnUserName>
+          <FullPath>TI.SP_Who - Consulta.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
